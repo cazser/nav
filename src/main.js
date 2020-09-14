@@ -4,10 +4,17 @@ const x = localStorage.getItem('x')
 const xObject = JSON.parse(x)
 const hashMap = xObject ||
                 [
-                {logo:"A", logogType:"text", url:"https://www.acfun.cn"},
-                {logo:"./img/bilibili1.jpg",logoType:"img",  url:"https://www.bilibili.com"},
-                {logo:"./img/zhihu_1.jpg",logoType:"img",  url:"https://www.zhihu.com/"}
+                {logo:"A", url:"https://www.acfun.cn"},
+                {logo:"B", url:"https://www.bilibili.com"},
+                {logo:"Z", url:"https://www.zhihu.com/"}
                 ]
+
+const simplify=(url)=>{
+    return url.replace("https://", "")
+              .replace("http://", "")
+              .replace("www.", "")
+              .replace("/\/.*/", "")
+}
 const render= ()=>{
     $siteList.find('li:not(.last)').remove()
     hashMap.forEach(node=>{
@@ -15,8 +22,9 @@ const render= ()=>{
             ` <li>
             <a href=${node.url}>
                 <div class="site">
-                    <div class="logo">${node.logo[0]}</div>
-                    <div class="link">${node.url}</div>
+                    <div class="logo">${node.logo}</div>
+                    <div class="link">${simplify(node.url)}</div>
+                    
                 </div>
                 </a>
             </li>`
@@ -33,7 +41,7 @@ $('.addButton')
      }
      
      
-     hashMap.push({logo:url[0], logoType:"text", url:url})
+     hashMap.push({logo:simplify(url)[0], url:url})
     render()
  })
  
@@ -41,3 +49,4 @@ $('.addButton')
      const string = JSON.stringify(hashMap)
      localStorage.setItem('x', string)
  }
+ 
