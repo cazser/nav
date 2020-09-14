@@ -84,7 +84,7 @@ max-height: 100%;}
     background-color: white;
     margin-bottom: 10px;
     position: relative;
-    
+    cursor: pointer;
 }
 
 .siteList .site > .logo{
@@ -105,6 +105,11 @@ max-height: 100%;}
     position: absolute;
     right: 10px;
     top:   5px;
+    display: none;
+}
+
+.siteList .site:hover > .close{
+    display: block;
 }
 .siteList .addButton{
     width: 160px;
