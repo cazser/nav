@@ -62,3 +62,11 @@ $('.addButton')
      localStorage.setItem('x', string)
  }
  
+ $(document).on("keypress", (e)=>{
+     const {key} = e
+     for(let i=0; i<hashMap.length; i++){
+         if(hashMap[i].logo.toLowerCase() === key){
+             window.open(hashMap[i].url)
+         }
+     }
+ })
