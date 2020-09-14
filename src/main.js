@@ -24,7 +24,11 @@ const render= ()=>{
                 <div class="site">
                     <div class="logo">${node.logo}</div>
                     <div class="link">${simplify(node.url)}</div>
-                    <div class="close">x</div>
+                    <div class="close">
+                    <svg class="icon">
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                    </div>
                 </div>
                 </a>
             </li>`
