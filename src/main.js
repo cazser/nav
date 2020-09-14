@@ -17,10 +17,10 @@ const simplify=(url)=>{
 }
 const render= ()=>{
     $siteList.find('li:not(.last)').remove()
-    hashMap.forEach(node=>{
+    hashMap.forEach((node , index )=>{
         const $li = $(
             ` <li>
-            <a href=${node.url}>
+            
                 <div class="site">
                     <div class="logo">${node.logo}</div>
                     <div class="link">${simplify(node.url)}</div>
@@ -30,9 +30,17 @@ const render= ()=>{
                     </svg>
                     </div>
                 </div>
-                </a>
+                
             </li>`
         ).insertBefore($lastLi)
+        $li.on('click', (e)=>{
+            window.open(node.url)
+        })
+        $li.on('click', '.close',(e)=>{
+            e.stopPropagation()
+            hashMap.splice(index, 1)
+            render()
+        })
     })
 }
 
