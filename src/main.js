@@ -24,7 +24,7 @@ const render= ()=>{
                 <div class="site">
                     <div class="logo">${node.logo}</div>
                     <div class="link">${simplify(node.url)}</div>
-                    
+                    <div class="close">x</div>
                 </div>
                 </a>
             </li>`
